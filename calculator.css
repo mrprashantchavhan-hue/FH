@@ -31,8 +31,8 @@ body {
   display: block;
   margin: 10px auto 20px;
   max-width: 100%;
-  width: 100%;
-  height: 90px;
+  width: auto;
+  height: 80px;
   border: none;
   border-radius: 6px;
   background: #f9f9f9;
@@ -40,8 +40,6 @@ body {
   box-sizing: border-box;
   object-fit: contain;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  pointer-events: none;
-  overflow: hidden;
 }
 
 h1 {
