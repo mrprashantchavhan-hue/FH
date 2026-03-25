@@ -24,6 +24,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100px;
+  overflow: hidden;
 }
 
 .logo {
@@ -39,6 +40,8 @@ body {
   box-sizing: border-box;
   object-fit: contain;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  pointer-events: none;
+  overflow: hidden;
 }
 
 h1 {
