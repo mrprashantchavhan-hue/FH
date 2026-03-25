@@ -16,8 +16,11 @@ body {
 
 .logo {
   display: block;
-  margin: 0 auto 10px;
-  max-width: 160px;
+  margin: 0 auto 20px;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
 }
 
 h1 {
