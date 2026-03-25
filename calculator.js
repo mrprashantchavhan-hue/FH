@@ -12,8 +12,8 @@ function calculatePremix() {
     document.getElementById("time").innerText = "-";
     document.getElementById("auto-deviation").innerText = "-";
     document.getElementById("auto-iron").innerText = "-";
-    document.getElementById("auto-status").innerText = "-";
-    document.getElementById("auto-status").className = "status";
+    document.getElementById("auto-status").innerText = "Enter values to calculate";
+    document.getElementById("auto-status").className = "status-indicator";
     return;
   }
 
@@ -73,7 +73,7 @@ function calculatePremix() {
     
     const statusDiv = document.getElementById("auto-status");
     statusDiv.innerText = statusText;
-    statusDiv.className = "status " + statusClass;
+    statusDiv.className = "status-indicator " + statusClass;
   } else {
     // Show calculated iron level when no actual output entered
     // Using a default scenario where actual output varies with atta flow
@@ -102,7 +102,7 @@ function calculatePremix() {
     
     const statusDiv = document.getElementById("auto-status");
     statusDiv.innerText = statusText;
-    statusDiv.className = "status " + statusClass;
+    statusDiv.className = "status-indicator " + statusClass;
   }
 }
 
