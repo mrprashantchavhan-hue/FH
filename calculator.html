@@ -7,49 +7,192 @@
   <link rel="stylesheet" href="calculator.css">
 </head>
 <body>
-  <div class="container">
-    <div class="logo-container">
-      <img src="assets/fortify-logo.png" alt="Fortify Health Logo" class="logo">
-    </div>
-    <h1>Fortification QA Calculator</h1>
-
-    <!-- Premix Output Calculator Section -->
-    <section class="calculator-section">
-      <h2>Premix Output Calculator</h2>
-      
-      <label>Atta Flow Rate (kg/hr)</label>
-      <input type="number" id="atta">
-
-      <label>Premix : Dilutor Ratio (e.g. 1:4)</label>
-      <input type="text" id="ratio" placeholder="e.g. 1:4">
-
-      <label>Standard Premix Addition (g/MT)</label>
-      <input type="number" id="standard">
-
-      <label>Hopper Capacity (kg)</label>
-      <input type="number" id="hopper">
-
-      <label>Actual Output Observed (g/min) - Optional for deviation</label>
-      <input type="number" id="actualOutput" placeholder="Enter to calculate deviation">
-
-      <button onclick="calculatePremix()" class="calculate-btn">Calculate</button>
-
-      <div class="results">
-        <p><b>Premix Output:</b> <span id="output">-</span> g/min</p>
-        <p><b>Premix Required:</b> <span id="required">-</span> kg/hr</p>
-        <p><b>Hopper Emptying Time:</b> <span id="time">-</span></p>
-        
-        <hr class="divider">
-        
-        <p><b>Output Deviation:</b> <span id="auto-deviation">-</span> %</p>
-        <p><b>Iron Level:</b> <span id="auto-iron">-</span> mg/kg</p>
-        <p><b>Acceptable Range:</b> 15.12 - 20.88 mg/kg</p>
-        <p><b>Calibration Requirement:</b></p>
-        <div id="auto-status" class="status">-</div>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div class="logo-section">
+          <img src="assets/fortify-logo.png" alt="Fortify Health Logo" class="logo">
+          <div class="brand-info">
+            <h1 class="brand-name">Fortify Health</h1>
+            <p class="brand-subtitle">Fortification QA Calculator</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button class="help-btn" onclick="showHelp()">Help</button>
+        </div>
       </div>
-    </section>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-wrapper">
+        <!-- Calculator Section -->
+        <section class="calculator-section">
+          <div class="section-header">
+            <h2>Quality Assurance Calculator</h2>
+            <p>Calculate premix output and iron fortification levels</p>
+          </div>
+
+          <div class="calculator-layout">
+            <!-- Input Panel -->
+            <div class="input-panel">
+              <h3>Input Parameters</h3>
+              
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="atta">Atta Flow Rate</label>
+                  <div class="input-container">
+                    <input type="number" id="atta" placeholder="0.0" step="0.1">
+                    <span class="input-unit">kg/hr</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="ratio">Premix : Dilutor Ratio</label>
+                  <div class="input-container">
+                    <input type="text" id="ratio" placeholder="1:4">
+                    <span class="input-hint">e.g. 1:4</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="standard">Standard Premix Addition</label>
+                  <div class="input-container">
+                    <input type="number" id="standard" placeholder="0.0" step="0.1">
+                    <span class="input-unit">g/MT</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="hopper">Hopper Capacity</label>
+                  <div class="input-container">
+                    <input type="number" id="hopper" placeholder="0" step="1">
+                    <span class="input-unit">kg</span>
+                  </div>
+                </div>
+
+                <div class="form-group optional">
+                  <label for="actualOutput">Actual Output Observed</label>
+                  <div class="input-container">
+                    <input type="number" id="actualOutput" placeholder="0.0" step="0.1">
+                    <span class="input-unit">g/min</span>
+                  </div>
+                  <span class="optional-text">Optional - for deviation calculation</span>
+                </div>
+              </div>
+
+              <button onclick="calculatePremix()" class="calculate-button">
+                Calculate Results
+              </button>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="results-panel">
+              <h3>Calculation Results</h3>
+              
+              <div class="results-grid">
+                <div class="result-item">
+                  <div class="result-label">Premix Output</div>
+                  <div class="result-value"><span id="output">-</span> g/min</div>
+                </div>
+
+                <div class="result-item">
+                  <div class="result-label">Premix Required</div>
+                  <div class="result-value"><span id="required">-</span> kg/hr</div>
+                </div>
+
+                <div class="result-item">
+                  <div class="result-label">Hopper Emptying Time</div>
+                  <div class="result-value"><span id="time">-</span></div>
+                </div>
+              </div>
+
+              <!-- Iron Analysis -->
+              <div class="iron-analysis">
+                <h4>Iron Analysis</h4>
+                <div class="iron-metrics">
+                  <div class="metric">
+                    <span class="metric-label">Output Deviation</span>
+                    <span class="metric-value" id="auto-deviation">-</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Iron Level</span>
+                    <span class="metric-value" id="auto-iron">-</span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Acceptable Range</span>
+                    <span class="metric-value">15.12 - 20.88 mg/kg</span>
+                  </div>
+                </div>
+                <div class="calibration-status">
+                  <span class="status-label">Calibration Requirement:</span>
+                  <div id="auto-status" class="status-indicator">Enter values to calculate</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="modal-overlay">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h3>How to Use</h3>
+          <button class="modal-close" onclick="closeHelp()">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="help-content">
+            <h4>Input Parameters</h4>
+            <ul>
+              <li><strong>Atta Flow Rate:</strong> Flow rate of atta in kilograms per hour</li>
+              <li><strong>Premix : Dilutor Ratio:</strong> Ratio between premix and dilutor (e.g., 1:4)</li>
+              <li><strong>Standard Premix Addition:</strong> Standard addition rate in grams per metric ton</li>
+              <li><strong>Hopper Capacity:</strong> Total capacity of the hopper in kilograms</li>
+              <li><strong>Actual Output (Optional):</strong> Measured output for deviation calculation</li>
+            </ul>
+            
+            <h4>Results</h4>
+            <ul>
+              <li><strong>Premix Output:</strong> Calculated output in grams per minute</li>
+              <li><strong>Premix Required:</strong> Required premix in kg per hour</li>
+              <li><strong>Hopper Emptying Time:</strong> Time until hopper is empty</li>
+              <li><strong>Iron Level:</strong> Calculated iron fortification level</li>
+              <li><strong>Calibration Status:</strong> Indicates if calibration is needed</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2024 Fortify Health. All rights reserved.</p>
+        <p>Version 2.0 | Professional Quality Assurance Calculator</p>
+      </div>
+    </footer>
   </div>
 
-<script src="calculator.js"></script>
+  <script src="calculator.js"></script>
+  <script>
+    function showHelp() {
+      document.getElementById('helpModal').style.display = 'flex';
+    }
+
+    function closeHelp() {
+      document.getElementById('helpModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('helpModal');
+      if (event.target == modal) {
+        closeHelp();
+      }
+    }
+  </script>
 </body>
 </html>
