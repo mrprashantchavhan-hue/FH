@@ -42,7 +42,7 @@ function calculatePremix() {
   
   // Auto-calculate Iron Level based on Premix Output
   const calOutput = parseFloat(outputGmMin.toFixed(0));
-  document.getElementById("calOutput").value = calOutput;
+  // document.getElementById("calOutput").value = calOutput; // Element doesn't exist, disabling for now.
   
   // Get actual output if entered
   const actualOutputValue = document.getElementById("actualOutput").value;
@@ -60,10 +60,10 @@ function calculatePremix() {
     let statusText = "";
     let statusClass = "";
     
-    if (ironLevel < 14 || ironLevel > 21.25) {
+    if (ironLevel <14 || ironLevel > 21.25) {
       statusText = "Major Calibration Required";
       statusClass = "red";
-    } else if (ironLevel >= 15.12 && ironLevel <= 20.88) {
+    } else if (ironLevel >= 15.84 && ironLevel <= 20.16) {
       statusText = "No Calibration Required";
       statusClass = "green";
     } else {
@@ -89,10 +89,10 @@ function calculatePremix() {
     let statusText = "";
     let statusClass = "";
     
-    if (ironLevel < 14 || ironLevel > 21.25) {
+    if (ironLevel <14 || ironLevel > 21.25) {
       statusText = "Major Calibration Required";
       statusClass = "red";
-    } else if (ironLevel >= 15.12 && ironLevel <= 20.88) {
+    } else if (ironLevel >= 15.84 && ironLevel <= 20.16) {
       statusText = "No Calibration Required";
       statusClass = "green";
     } else {
