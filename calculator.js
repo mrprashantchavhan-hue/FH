@@ -46,64 +46,41 @@ function calculatePremix() {
   
   // Get actual output if entered
   const actualOutputValue = document.getElementById("actualOutput").value;
+  let actualOutput = calOutput; // default to perfect output
   
-  if (actualOutputValue) {
-    // Calculate deviation and iron level based on actual output
-    const actualOutput = parseFloat(actualOutputValue);
-    const deviation = ((actualOutput - calOutput) / calOutput) * 100;
-    const ironLevel = (actualOutput / calOutput) * 18;
-    
-    document.getElementById("auto-deviation").innerText = deviation.toFixed(2);
-    document.getElementById("auto-iron").innerText = ironLevel.toFixed(2);
-    
-    // Determine calibration status
-    let statusText = "";
-    let statusClass = "";
-    
-    if (ironLevel <14 || ironLevel > 21.25) {
-      statusText = "Major Calibration Required";
-      statusClass = "red";
-    } else if (ironLevel >= 15.84 && ironLevel <= 20.16) {
-      statusText = "No Calibration Required";
-      statusClass = "green";
-    } else {
-      statusText = "Minor Calibration Required";
-      statusClass = "yellow";
-    }
-    
-    const statusDiv = document.getElementById("auto-status");
-    statusDiv.innerText = statusText;
-    statusDiv.className = "status-indicator " + statusClass;
-  } else {
-    // Show calculated iron level when no actual output entered
-    // Using a default scenario where actual output varies with atta flow
-    // Example: if atta increases, output increases, showing dynamic iron level
-    const dynamicActualOutput = calOutput * 0.89; // Example: 89% of expected (showing deviation)
-    const deviation = ((dynamicActualOutput - calOutput) / calOutput) * 100;
-    const ironLevel = (dynamicActualOutput / calOutput) * 18;
-    
-    document.getElementById("auto-deviation").innerText = deviation.toFixed(2);
-    document.getElementById("auto-iron").innerText = ironLevel.toFixed(2);
-    
-    // Determine calibration status based on dynamic calculation
-    let statusText = "";
-    let statusClass = "";
-    
-    if (ironLevel <14 || ironLevel > 21.25) {
-      statusText = "Major Calibration Required";
-      statusClass = "red";
-    } else if (ironLevel >= 15.84 && ironLevel <= 20.16) {
-      statusText = "No Calibration Required";
-      statusClass = "green";
-    } else {
-      statusText = "Minor Calibration Required";
-      statusClass = "yellow";
-    }
-    
-    const statusDiv = document.getElementById("auto-status");
-    statusDiv.innerText = statusText;
-    statusDiv.className = "status-indicator " + statusClass;
+  if (actualOutputValue && !isNaN(parseFloat(actualOutputValue))) {
+    actualOutput = parseFloat(actualOutputValue);
   }
+  
+  // Calculate deviation and iron level
+  const deviation = ((actualOutput - calOutput) / calOutput) * 100;
+  const ironLevel = (actualOutput / calOutput) * 18;
+  
+  document.getElementById("auto-deviation").innerText = deviation.toFixed(2);
+  document.getElementById("auto-iron").innerText = ironLevel.toFixed(2);
+  
+  // Determine calibration status based on user-provided rules:
+  // 15.84 to 20.16 (+/- 12%) - No action
+  // 15.12 to 15.84 or 20.16 to 20.88 (+/- 16%) - Minor calibration
+  // <15.12 or >20.88 - Major calibration
+  
+  let statusText = "";
+  let statusClass = "";
+  
+  if (ironLevel >= 15.84 && ironLevel <= 20.16) {
+    statusText = "No Calibration Required";
+    statusClass = "green";
+  } else if ((ironLevel >= 15.12 && ironLevel < 15.84) || (ironLevel > 20.16 && ironLevel <= 20.88)) {
+    statusText = "Minor Calibration Required";
+    statusClass = "yellow";
+  } else {
+    statusText = "Major Calibration Required";
+    statusClass = "red";
+  }
+  
+  const statusDiv = document.getElementById("auto-status");
+  statusDiv.innerText = statusText;
+  statusDiv.className = "status-indicator " + statusClass;
 }
 
 // Add real-time event listeners for automatic calculation
