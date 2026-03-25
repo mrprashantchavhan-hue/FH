@@ -453,6 +453,32 @@ body {
   color: #842029;
 }
 
+/* status-indicator aliases — used by calculator.js */
+.status-indicator {
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 5px;
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-indicator.green {
+  background: #c8e6c9;
+  color: #256029;
+}
+
+.status-indicator.yellow {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-indicator.red {
+  background: #f8d7da;
+  color: #842029;
+}
+
 /* ============ SCROLLBAR ============ */
 .sidebar::-webkit-scrollbar,
 .content::-webkit-scrollbar {
@@ -514,12 +540,15 @@ body {
   .content {
     padding: 20px;
   }
-5px;
+
+  .sidebar {
+    width: 75px;
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
   }
+
 
   .main-content {
     margin-left: 75px;
@@ -536,15 +565,7 @@ body {
   }
 
   .sidebar-logo {
-    height: 5
-  }
-
-  .main-content {
-    margin-left: 70px;
-  }
-
-  .logo-wrapper {
-    margin-bottom: 10px;
+    height: 50px;
   }
 
   .app-name {
