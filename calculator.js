@@ -118,39 +118,3 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Iron Deviation Calculator
-function calculateIron() {
-  const cal = parseFloat(document.getElementById("calOutput").value);
-  const act = parseFloat(document.getElementById("actOutput").value);
-
-  if (!cal || !act) {
-    alert("Please enter valid outputs");
-    return;
-  }
-
-  // Percentage deviation
-  const deviation = ((act - cal) / cal) * 100;
-
-  // Iron level calculation
-  const iron = (act / cal) * 18;
-
-  let statusText = "";
-  let statusClass = "";
-
-  if (iron < 14 || iron > 21.25) {
-    statusText = "Major Calibration Required";
-    statusClass = "red";
-  } else if (iron >= 15.12 && iron <= 20.88) {
-    statusText = "No Calibration Required";
-    statusClass = "green";
-  } else {
-    statusText = "Minor Calibration Required";
-    statusClass = "yellow";
-  }
-
-  document.getElementById("deviation").innerText = deviation.toFixed(2);
-  document.getElementById("iron-level").innerText = iron.toFixed(2);
-  const statusDiv = document.getElementById("status");
-  statusDiv.innerText = statusText;
-  statusDiv.className = "status " + statusClass;
-}

@@ -46,29 +46,6 @@
         <div id="auto-status" class="status">-</div>
       </div>
     </section>
-
-    <!-- Iron Deviation & Calibration Calculator Section -->
-    <section class="calculator-section">
-      <h2>Iron Deviation & Calibration</h2>
-      
-      <label>Output as per Calibration Chart (g/min)</label>
-      <input type="number" id="calOutput">
-
-      <label>Actual Output Observed (g/min)</label>
-      <input type="number" id="actOutput">
-
-      <label>Standard Premix Addition Rate</label>
-      <input type="text" value="200 g/MT (Fixed)" disabled>
-
-      <button onclick="calculateIron()" class="calculate-btn">Calculate</button>
-
-      <div class="results">
-        <p><b>Output Deviation:</b> <span id="deviation">-</span> %</p>
-        <p><b>Iron Level:</b> <span id="iron-level">-</span> mg/kg</p>
-        <p><b>Calibration Requirement:</b></p>
-        <div id="status" class="status">-</div>
-      </div>
-    </section>
   </div>
 
 <script src="calculator.js"></script>
