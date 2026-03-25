@@ -33,63 +33,76 @@ body {
 
 /* Logo Section */
 .logo-section {
-  padding: 30px 16px;
-  text-align: center;
+  padding: 20px 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   background: linear-gradient(180deg, #0f1724 0%, #16213e 100%);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
 .logo-wrapper {
-  height: 80px;
+  height: 60px;
+  width: 60px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-  border-radius: 12px;
-  padding: 12px;
-  border: 1px solid rgba(198, 40, 40, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+  box-shadow: none;
   transition: all 0.3s ease;
 }
 
 .logo-wrapper:hover {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
-  border-color: rgba(198, 40, 40, 0.4);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}18px;
-  font-weight: 700;
-  color: #fff;
-  margin: 8px 0 4px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  text-align: center
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.sidebar-logo {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
   transition: all 0.3s ease;
 }
 
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
 .app-name {
-  font-size: 20px;
-  font-weight: 700;
-  color: #fff;1px;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  font-size: 14px;
+  font-weight: 800;
+  color: #ecf0f1;
+  letter-spacing: 1px;
+  line-height: 1.1;
   margin: 0;
-  text-align: center;
-  font-weight: 50
+  padding: 0;
+}
+
 .app-tagline {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-weight: 800;
+  color: #ecf0f1;
+  letter-spacing: 0.8px;
+  line-height: 1.1;
   margin: 0;
+  padding: 0;
 }
 
 /* Navigation */
