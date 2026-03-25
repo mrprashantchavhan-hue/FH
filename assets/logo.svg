@@ -1,0 +1,32 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#f0f0f0" stroke-width="2" opacity="0.1"/>
+  
+  <!-- Left leaf -->
+  <ellipse cx="65" cy="60" rx="20" ry="35" fill="none" stroke="#2d3e50" stroke-width="8" transform="rotate(-30 65 60)"/>
+  <ellipse cx="65" cy="60" rx="12" ry="22" fill="#a8d8d8" transform="rotate(-30 65 60)"/>
+  
+  <!-- Top right leaf -->
+  <ellipse cx="130" cy="45" rx="18" ry="32" fill="none" stroke="#2d3e50" stroke-width="8" transform="rotate(25 130 45)"/>
+  <ellipse cx="130" cy="45" rx="10" ry="20" fill="#a8d8d8" transform="rotate(25 130 45)"/>
+  
+  <!-- Bottom right leaf -->
+  <ellipse cx="140" cy="110" rx="20" ry="35" fill="none" stroke="#2d3e50" stroke-width="8" transform="rotate(40 140 110)"/>
+  <ellipse cx="140" cy="110" rx="12" ry="22" fill="#a8d8d8" transform="rotate(40 140 110)"/>
+  
+  <!-- Center stem -->
+  <path d="M 100 40 Q 98 60 100 80 Q 102 100 100 120" stroke="#2d3e50" stroke-width="8" fill="none" stroke-linecap="round"/>
+  
+  <!-- Decorative dots -->
+  <circle cx="85" cy="70" r="5" fill="#f4d35e"/>
+  <circle cx="115" cy="55" r="4" fill="#f4d35e"/>
+  <circle cx="90" cy="105" r="5" fill="#f4d35e"/>
+  
+  <!-- Root circle with cross -->
+  <circle cx="100" cy="145" r="25" fill="none" stroke="#2d3e50" stroke-width="7"/>
+  <circle cx="100" cy="145" r="20" fill="#f4a8a8"/>
+  <g stroke="white" stroke-width="4" stroke-linecap="round">
+    <line x1="100" y1="135" x2="100" y2="155"/>
+    <line x1="90" y1="145" x2="110" y2="145"/>
+  </g>
+</svg>
